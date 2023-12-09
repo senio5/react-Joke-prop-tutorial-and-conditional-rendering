@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Joke from "./components/Joke"
+//import javascript jokesData to use the .map function on the elements
+import jokesData from "./jokesData"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+//
+export default function App(){
+  //first part = an array of objects from jokesData
+  //create a variable and set it equal to the import jokesData.map function
+  const jokeElements = jokesData.map(function(joke){
+    //second part = the props for joke and punchline
+    //return javascript Joke props equal to a new variable
+    return <Joke setup={joke.setup} punchline={joke.punchline} />
+    //<Joke extracts the data from jokesData with props and the map function returns the data
+    //as a new string of data
+  })
+  //return the javascript {jokeElements} has to be wrapped in {} to read as javascript
+  return(
+    <div>
+      {jokeElements}
     </div>
-  );
+     
+  )
 }
 
-export default App;
+
+//export the joke component from components Joke.js
+//create a function that return 4 joke components
+//make sure to have the functions created in App,js like - setup and punchline in the called upon Joke component
